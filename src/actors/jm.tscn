@@ -1,0 +1,165 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://assets/jm/Idle (1).png" type="Texture" id=1]
+[ext_resource path="res://assets/jm/Attack (3).png" type="Texture" id=2]
+[ext_resource path="res://assets/jm/Idle (2).png" type="Texture" id=3]
+[ext_resource path="res://assets/jm/Idle (11).png" type="Texture" id=4]
+[ext_resource path="res://assets/jm/Idle (6).png" type="Texture" id=5]
+[ext_resource path="res://assets/jm/Idle (8).png" type="Texture" id=6]
+[ext_resource path="res://assets/jm/Idle (3).png" type="Texture" id=7]
+[ext_resource path="res://assets/jm/Idle (5).png" type="Texture" id=8]
+[ext_resource path="res://assets/jm/Idle (10).png" type="Texture" id=9]
+[ext_resource path="res://assets/jm/Idle (12).png" type="Texture" id=10]
+[ext_resource path="res://assets/jm/Idle (15).png" type="Texture" id=11]
+[ext_resource path="res://assets/jm/Walk (4).png" type="Texture" id=12]
+[ext_resource path="res://assets/jm/Walk (7).png" type="Texture" id=13]
+[ext_resource path="res://assets/jm/Walk (8).png" type="Texture" id=14]
+[ext_resource path="res://assets/jm/Walk (9).png" type="Texture" id=15]
+[ext_resource path="res://assets/jm/Idle (4).png" type="Texture" id=16]
+[ext_resource path="res://assets/jm/Walk (1).png" type="Texture" id=17]
+[ext_resource path="res://assets/jm/Walk (10).png" type="Texture" id=18]
+[ext_resource path="res://assets/jm/Attack (2).png" type="Texture" id=19]
+[ext_resource path="res://assets/jm/Attack (4).png" type="Texture" id=20]
+[ext_resource path="res://assets/jm/Attack (5).png" type="Texture" id=21]
+[ext_resource path="res://assets/jm/Attack (6).png" type="Texture" id=22]
+[ext_resource path="res://assets/jm/Attack (7).png" type="Texture" id=23]
+[ext_resource path="res://assets/jm/Attack (8).png" type="Texture" id=24]
+[ext_resource path="res://assets/jm/Walk (6).png" type="Texture" id=25]
+[ext_resource path="res://assets/jm/Walk (5).png" type="Texture" id=26]
+[ext_resource path="res://assets/jm/Dead (1).png" type="Texture" id=27]
+[ext_resource path="res://assets/jm/Idle (9).png" type="Texture" id=28]
+[ext_resource path="res://assets/jm/Idle (7).png" type="Texture" id=29]
+[ext_resource path="res://assets/jm/Walk (2).png" type="Texture" id=30]
+[ext_resource path="res://assets/jm/Idle (14).png" type="Texture" id=31]
+[ext_resource path="res://assets/jm/Idle (13).png" type="Texture" id=32]
+[ext_resource path="res://assets/jm/Walk (3).png" type="Texture" id=33]
+[ext_resource path="res://assets/jm/Attack (1).png" type="Texture" id=34]
+[ext_resource path="res://assets/jm/Dead (6).png" type="Texture" id=35]
+[ext_resource path="res://assets/jm/Dead (4).png" type="Texture" id=36]
+[ext_resource path="res://assets/jm/Dead (5).png" type="Texture" id=37]
+[ext_resource path="res://assets/jm/Dead (7).png" type="Texture" id=38]
+[ext_resource path="res://assets/jm/Dead (3).png" type="Texture" id=39]
+[ext_resource path="res://assets/jm/Dead (2).png" type="Texture" id=40]
+[ext_resource path="res://assets/jm/Dead (9).png" type="Texture" id=41]
+[ext_resource path="res://assets/jm/Dead (11).png" type="Texture" id=42]
+[ext_resource path="res://assets/jm/Dead (10).png" type="Texture" id=43]
+[ext_resource path="res://assets/jm/Dead (8).png" type="Texture" id=44]
+[ext_resource path="res://assets/jm/Dead (12).png" type="Texture" id=45]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.2039, 58.4308 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 38.7266, 5.45434 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 34 ), ExtResource( 19 ), ExtResource( 2 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "dead"
+length = 1.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 27 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 44 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 50, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 29 ), ExtResource( 6 ), ExtResource( 28 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 11 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.301, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 17 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ) ]
+}
+
+[node name="jm" type="KinematicBody2D"]
+collision_layer = 2147483652
+collision_mask = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.36359, 14.4543 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -1.68182, -49.6129 )
+shape = SubResource( 3 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( -1.68182, -49.6129 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/attack = SubResource( 4 )
+anims/dead = SubResource( 5 )
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 6 )

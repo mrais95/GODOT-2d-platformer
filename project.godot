@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="JAP"
+run/main_scene="res://src/levels/level-1.tscn"
+config/icon="res://icon.png"
+
+[layer_names]
+
+2d_physics/layer_1="mc"
+2d_physics/layer_2="world"
+2d_physics/layer_3="damaging-enemy"
+2d_physics/layer_4="stomp-enemy"
+2d_physics/layer_5="mc-stomper"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
