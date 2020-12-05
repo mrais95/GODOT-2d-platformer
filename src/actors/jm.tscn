@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://assets/jm/Idle (1).png" type="Texture" id=1]
 [ext_resource path="res://assets/jm/Attack (3).png" type="Texture" id=2]
@@ -45,14 +45,15 @@
 [ext_resource path="res://assets/jm/Dead (10).png" type="Texture" id=43]
 [ext_resource path="res://assets/jm/Dead (8).png" type="Texture" id=44]
 [ext_resource path="res://assets/jm/Dead (12).png" type="Texture" id=45]
+[ext_resource path="res://src/actors/jm.gd" type="Script" id=46]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 36.2039, 58.4308 )
+extents = Vector2( 63.7844, 5.10745 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 38.7266, 5.45434 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 56.225, 12.5538 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "attack"
 length = 0.8
 tracks/0/type = "value"
@@ -68,7 +69,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 34 ), ExtResource( 19 ), ExtResource( 2 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "dead"
 length = 1.2
 step = 0.01
@@ -84,21 +85,8 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 27 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 44 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 45 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.01 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 50, 0 ) ]
-}
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=5]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -129,16 +117,23 @@ tracks/0/keys = {
 "values": [ ExtResource( 17 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 48.0663, 78.0446 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 59.0731, 10 )
+
 [node name="jm" type="KinematicBody2D"]
-collision_layer = 2147483652
+collision_layer = 2147483680
 collision_mask = 2
+script = ExtResource( 46 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 27 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.36359, 14.4543 )
+position = Vector2( 2.78023, 92.8546 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -146,20 +141,38 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -1.68182, -49.6129 )
-shape = SubResource( 3 )
+position = Vector2( -1.32467, -75.3828 )
+shape = SubResource( 2 )
 
 [node name="Area2D2" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2( -1.68182, -49.6129 )
-shape = SubResource( 3 )
+position = Vector2( -1.32467, -75.3828 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/attack = SubResource( 4 )
-anims/dead = SubResource( 5 )
-anims/idle = SubResource( 2 )
+anims/attack = SubResource( 3 )
+anims/dead = SubResource( 4 )
+anims/idle = SubResource( 5 )
 anims/walk = SubResource( 6 )
+
+[node name="Area2D3" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2( -3.713, 10.3071 )
+shape = SubResource( 7 )
+
+[node name="Area2D4" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2( 0, 85.4035 )
+shape = SubResource( 8 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_shape_entered" from="Area2D4" to="." method="_on_Area2D4_area_shape_entered"]

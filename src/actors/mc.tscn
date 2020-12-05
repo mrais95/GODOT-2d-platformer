@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://assets/main/Walk (2).png" type="Texture" id=1]
 [ext_resource path="res://assets/main/Walk (9).png" type="Texture" id=2]
@@ -58,18 +58,22 @@
 [ext_resource path="res://assets/main/Dead (8).png" type="Texture" id=56]
 [ext_resource path="res://assets/main/Dead (10).png" type="Texture" id=57]
 [ext_resource path="res://assets/main/Dead (3).png" type="Texture" id=58]
+[ext_resource path="res://src/actors/mc.gd" type="Script" id=59]
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 57.732, 83.5892 )
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 40.1673, 83.5892 )
 
-[sub_resource type="CapsuleShape2D" id=8]
-radius = 50.3157
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 35.4326
 height = 55.1344
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 46.1127, 10 )
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 31, 10 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 31.9853, 10.1604 )
+
+[sub_resource type="Animation" id=13]
 resource_name = "dead"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -84,8 +88,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 53 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 54 ), ExtResource( 56 ), ExtResource( 55 ), ExtResource( 57 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=14]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -100,8 +103,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 28 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 23 ), ExtResource( 21 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "jump"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -115,8 +117,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 39 ), ExtResource( 46 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 37 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 29 ), ExtResource( 33 ), ExtResource( 30 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "run"
+[sub_resource type="Animation" id=7]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -132,8 +133,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 10 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "slide"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -183,8 +183,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.75 ), Vector2( 1, 0.75 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "walk"
+[sub_resource type="Animation" id=9]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -201,44 +200,59 @@ tracks/0/keys = {
 
 [node name="mc" type="KinematicBody2D"]
 collision_mask = 2
+script = ExtResource( 59 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 39 )
+texture = ExtResource( 28 )
 
 [node name="body-collision" type="CollisionShape2D" parent="."]
-position = Vector2( -6.35678, 2.05948 )
-shape = SubResource( 7 )
+position = Vector2( -18.8435, 4.4379 )
+shape = SubResource( 10 )
 
 [node name="vulnurable-spot" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
 [node name="vulnurable-collision" type="CollisionShape2D" parent="vulnurable-spot"]
-position = Vector2( -5.2973, 6.35678 )
-shape = SubResource( 8 )
+position = Vector2( -17.4326, 4.42439 )
+shape = SubResource( 11 )
 
 [node name="stomper" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
 [node name="stomper-collision" type="CollisionShape2D" parent="stomper"]
-position = Vector2( -8.48529, 75.6604 )
-shape = SubResource( 9 )
+position = Vector2( -18.5, 78 )
+shape = SubResource( 15 )
 
 [node name="stomper2" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
 [node name="stomper-collision" type="CollisionShape2D" parent="stomper2"]
-position = Vector2( -8.48529, 75.6604 )
-shape = SubResource( 9 )
+position = Vector2( -18.4853, 77.1604 )
+shape = SubResource( 12 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 2500
+limit_bottom = 1000
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 4.0
+editor_draw_limits = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/dead = SubResource( 6 )
-anims/idle = SubResource( 1 )
-anims/jump = SubResource( 4 )
-anims/run = SubResource( 2 )
-anims/slide = SubResource( 5 )
-anims/walk = SubResource( 3 )
+anims/dead = SubResource( 13 )
+anims/idle = SubResource( 14 )
+anims/jump = SubResource( 6 )
+anims/run = SubResource( 7 )
+anims/slide = SubResource( 8 )
+anims/walk = SubResource( 9 )
+[connection signal="area_shape_entered" from="vulnurable-spot" to="." method="_on_vulnurablespot_area_shape_entered"]
+[connection signal="area_shape_entered" from="stomper" to="." method="_on_stomper_area_shape_entered"]
